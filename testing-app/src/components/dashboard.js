@@ -33,6 +33,7 @@ const Button = styled.button`
 function Dashboard() {
     const [strikes, setStrikes] = useState(0);
     const [balls, setBalls] = useState(0);
+    const [hit, setHit] = useState(0);
 
     function incStrikes() {
         if (strikes >= 2) {
@@ -57,6 +58,15 @@ function Dashboard() {
             setBalls(balls + 1)
         };
     }
+    function hits() {
+        if (hit >= 0) {
+            setBalls(0)
+            setStrikes(0)
+            setHit(0)
+        } else {
+            setHit(hit + 1)
+        }
+    }
 
     return (
         <>
@@ -76,6 +86,7 @@ function Dashboard() {
                     <Button onClick={() => {incStrikes()}}>+ Strike</Button>
                     <Button onClick={() => {fouls()}}>+ Foul</Button>
                     <Button onClick={() => {incballs()}}>+ Ball</Button>
+                    <Button onClick={() => {hits()}}>Hit</Button>
                 </div>
             </Board>
         </>
